@@ -20,7 +20,7 @@ $user_name = $_SESSION['user_name'];
 
     <nav style="margin:16px 0;">
     <a href="magazzino.php">Magazzino</a>
-    <a href="dashboard_cucina.php" style="margin-right:12px;">Cucina</a>
+    <a href="cucina.php" style="margin-right:12px;">Cucina</a>
     <a href="ufficio.php" style="margin-right:12px;">Ufficio</a>
     <a href="dati_inseriti.php" style="margin-right:12px;">Dati inseriti</a>
     </nav>

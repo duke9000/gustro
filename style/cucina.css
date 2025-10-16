@@ -64,10 +64,16 @@ input[type="submit"]:hover {
 }
 
 /* Sezione ingredienti o materie prime */
+/* Sezione ingredienti o materie prime */
 .ingredienti {
   margin-top: 20px;
   padding: 16px;
   background-color: #fef3e7;
   border: 1px solid #e0c4a8;
   border-radius: 12px;
-  box-shadow: 0 2
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.ingredienti h3 {
+  margin-top: 0;
+  color: #a0522d;
+}

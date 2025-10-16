@@ -67,6 +67,16 @@ WHERE codice_articolo IS NULL OR codice_articolo = ''
 
 
 
+ALTER TABLE prodotti
+ADD COLUMN peso_congelato DECIMAL(6,2) DEFAULT NULL,
+ADD COLUMN peso_scongelato DECIMAL(6,2) DEFAULT NULL,
+ADD COLUMN feedback_cuoco TEXT DEFAULT NULL,
+ADD COLUMN foto_cucina VARCHAR(255) DEFAULT NULL;
+
+ALTER TABLE prodotti
+ADD COLUMN conservazione VARCHAR(20) DEFAULT
+
+
 
 
 

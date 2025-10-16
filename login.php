@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         header("Location: public/magazzino.php");
                         break;
                     case 'cucina':
-                        header("Location: public/dashboard_cucina.php");
+                        header("Location: public/cucina.php");
                         break;
                     case 'ufficio':
                         header("Location: public/ufficio.php");

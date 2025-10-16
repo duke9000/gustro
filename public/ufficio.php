@@ -66,6 +66,11 @@ $user_name = $_SESSION['user_name'];
   <h1>📦 Ciao, <?php echo htmlspecialchars($user_name);?>!</h1>  
   <h4>📋 Immetti i campi mancanti delle Materie prime</h4>
   <a href="../logout.php">🔒 Logout</a>
+  <?php if ($_SESSION['mansione'] === 'admin'): ?>
+    <br><br>
+    <a href="admin.php">⬅️ Torna alla dashboard Admin</a>
+    <?php endif; ?>
+    
     <table>
       <thead>
         <tr>
@@ -86,7 +91,7 @@ $user_name = $_SESSION['user_name'];
 
         while ($row = mysqli_fetch_assoc($result)) {
           echo "<tr>";
-          echo "<form method='post' action='aggiorna_prezzo.php'>";
+          echo "<form method='post' action='ufficio_aggiorna_prezzo.php'>";
           
           // Codice Articolo (modificabile)
           echo "<td><input type='text' name='codice_articolo' value='" . htmlspecialchars($row['codice_articolo']) . "'></td>";

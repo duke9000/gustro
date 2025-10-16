@@ -21,33 +21,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Tipologia e posizione
 $tipologia = '';
 $posizione = '';
+$conservazione = '';
 
 if (isset($_POST['tradizionale'])) {
     $tipologia = 'Tradizionale';
     if (!empty($_POST['posizione_tradizionale_congelato'])) {
         $posizione = 'Congelatore ' . $_POST['posizione_tradizionale_congelato'];
+        $conservazione = 'congelato';
     } elseif (!empty($_POST['posizione_tradizionale_frigorifero'])) {
         $posizione = 'Frigorifero ' . $_POST['posizione_tradizionale_frigorifero'];
+        $conservazione = 'frigorifero';
     } elseif (!empty($_POST['posizione_tradizionale_magazzino'])) {
         $posizione = 'Magazzino ' . $_POST['posizione_tradizionale_magazzino'];
+        $conservazione = 'magazzino';
     }
 } elseif (isset($_POST['bio'])) {
     $tipologia = 'BIO';
     if (!empty($_POST['posizione_bio_congelato'])) {
         $posizione = 'Congelatore ' . $_POST['posizione_bio_congelato'];
+        $conservazione = 'congelato';
     } elseif (!empty($_POST['posizione_bio_frigorifero'])) {
         $posizione = 'Frigorifero ' . $_POST['posizione_bio_frigorifero'];
+        $conservazione = 'frigorifero';
     } elseif (!empty($_POST['posizione_bio_magazzino'])) {
         $posizione = 'Magazzino ' . $_POST['posizione_bio_magazzino'];
+        $conservazione = 'magazzino';
     }
 } elseif (isset($_POST['gluten_free'])) {
     $tipologia = 'Senza Glutine';
     if (!empty($_POST['posizione_gluten_free_congelato'])) {
         $posizione = 'Congelatore ' . $_POST['posizione_gluten_free_congelato'];
+        $conservazione = 'congelato';
     } elseif (!empty($_POST['posizione_gluten_free_frigorifero'])) {
         $posizione = 'Frigorifero ' . $_POST['posizione_gluten_free_frigorifero'];
+        $conservazione = 'frigorifero';
     } elseif (!empty($_POST['posizione_gluten_free_magazzino'])) {
         $posizione = 'Magazzino ' . $_POST['posizione_gluten_free_magazzino'];
+        $conservazione = 'magazzino';
     }
 }
 
@@ -78,17 +88,18 @@ if (isset($_POST['tradizionale'])) {
     }
 
     // Inserimento nel database
-    $query_sql = "INSERT INTO prodotti (
-        materia_prima, codice_articolo, fornitore, provenienza, dimensione_collo, pezzatura,
-        data_di_arrivo, data_di_scadenza, prezzo, feedback,
-        tipologia, posizione,
-        responsabile_magazzino, foto_preview
-    ) VALUES (
-        '$materia_prima', '$codice_articolo', '$fornitore', '$provenienza', '$dimensione_collo', '$pezzatura',
-        '$data_di_arrivo', '$data_di_scadenza', '$prezzo', '$feedback',
-        '$tipologia', '$posizione',
-        '$responsabile', '$foto_preview'
-    )";
+   $query_sql = "INSERT INTO prodotti (
+    materia_prima, codice_articolo, fornitore, provenienza, dimensione_collo, pezzatura,
+    data_di_arrivo, data_di_scadenza, prezzo, feedback,
+    tipologia, posizione, conservazione,
+    responsabile_magazzino, foto_preview
+) VALUES (
+    '$materia_prima', '$codice_articolo', '$fornitore', '$provenienza', '$dimensione_collo', '$pezzatura',
+    '$data_di_arrivo', '$data_di_scadenza', '$prezzo', '$feedback',
+    '$tipologia', '$posizione', '$conservazione',
+    '$responsabile', '$foto_preview'
+)";
+
 
     $risultato = $con->query($query_sql);
 

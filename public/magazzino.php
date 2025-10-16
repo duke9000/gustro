@@ -27,12 +27,18 @@ $user_name = $_SESSION['user_name'];
     <!-- Saluto personalizzato -->
     <h1>📦 Ciao, <?php echo htmlspecialchars($user_name); ?>!</h1>
     <p>Questa è la tua pagina dedicata al <strong>Magazzino</strong>.</p>
+    <!-- Ritorno a Logout -->
     <a href="../logout.php">🔒 Logout</a>
+    <!-- Se la mansione è admin vedi il link -->
+    <?php if ($_SESSION['mansione'] === 'admin'): ?>
+    <br><br>
+    <a href="admin.php">⬅️ Torna alla dashboard Admin</a>
+    <?php endif; ?>
 
     <h1> Inserimento Materie Prime</h1>
 
     <!-- Form di inserimento -->
-    <form method="post" action="inserimento_materie_prime.php" enctype="multipart/form-data" onsubmit="showSuccessMessage()">
+    <form method="post" action="magazzino_inserimento_materie_prime.php" enctype="multipart/form-data" onsubmit="showSuccessMessage()">
 
       <!-- Sezione foto -->
       <h2>📷 Foto Ingredienti</h2>
