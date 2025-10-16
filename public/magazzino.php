@@ -2,7 +2,7 @@
 session_start();
 
 // 🔐 Controllo accesso: solo utenti con mansione "magazzino" possono accedere
-if($_SESSION['mansione'] !== 'magazzino') {
+if (!isset($_SESSION['mansione']) || !in_array($_SESSION['mansione'], ['magazzino', 'admin'])) {
     header("Location: login.php");
     exit;
 }

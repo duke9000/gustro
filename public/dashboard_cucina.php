@@ -3,26 +3,15 @@ session_start();
 require_once '../connection.php';
 
 // 🔐 Controllo accesso
-if ($_SESSION['mansione'] !== 'cucina') {
+if (!isset($_SESSION['mansione']) || !in_array($_SESSION['mansione'], ['cucina', 'admin'])) {
     header("Location: login.php");
     exit;
 }
-
 $user_name = $_SESSION['user_name'];
-
-
-$conn = new mysqli("localhost", "root", "", "db_gustro");
-
-/*
-CONNESSIONE A GUSTRO
-$conn = new mysqli("localhost", "root", "", "db_gustro");
-*/
-
-
 
 // 🔍 Query prodotti non ancora lavorati
 $query = "SELECT materia_prima, data_di_arrivo, foto_preview, fornitore FROM prodotti WHERE lavorazione_completata = 0 ORDER BY data_di_arrivo DESC";
-$result = $conn->query($query);
+$result = $con->query($query);
 ?>
 
 <!DOCTYPE html>
@@ -33,37 +22,7 @@ $result = $conn->query($query);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style/cucina.css">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <style>
-    @media screen and (max-width: 600px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
 
-      thead {
-        display: none;
-      }
-
-      tr {
-  border: 1px solid #d3b48d;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 3px;
-}
-
-td {
-  border: none; /* rimuove il bordo inferiore */
-}
-
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        color: #4b3a2d;
-        display: block;
-        margin-bottom: 4px;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="container">

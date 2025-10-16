@@ -2,7 +2,7 @@
 session_start();
 
 // 🔐 Controllo accesso
-if($_SESSION['mansione'] !== 'cucina') {
+if (!isset($_SESSION['mansione']) || !in_array($_SESSION['mansione'], ['magazzino', 'admin'])) {
     header("Location: login.php");
     exit;
 }

@@ -3,7 +3,9 @@ session_start();
 require_once('../connection.php');
 
 // 🔐 Controllo accesso
-if ($_SESSION['mansione'] !== 'ufficio') {
+
+
+if (!isset($_SESSION['mansione']) || !in_array($_SESSION['mansione'], ['ufficio', 'admin'])) {
     header("Location: login.php");
     exit;
 }
@@ -63,6 +65,7 @@ $user_name = $_SESSION['user_name'];
   <div class="container">
   <h1>📦 Ciao, <?php echo htmlspecialchars($user_name);?>!</h1>  
   <h4>📋 Immetti i campi mancanti delle Materie prime</h4>
+  <a href="../logout.php">🔒 Logout</a>
     <table>
       <thead>
         <tr>

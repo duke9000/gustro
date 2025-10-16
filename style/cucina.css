@@ -1,0 +1,73 @@
+/* Reset e struttura base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url("../img/sfondo.png");
+  background-repeat: repeat;
+  background-size: 280px;
+  color: #5a3e2b;
+}
+
+/* Contenitore principale */
+.container {
+  max-width: 360px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fffaf3;
+  border-radius: 18px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* Titoli */
+h1, h2 {
+  text-align: center;
+  color: #a0522d;
+  margin-bottom: 20px;
+}
+
+/* Campi input */
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #d2b48c;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #fff8ee;
+  color: #4b2e1f;
+}
+
+/* Pulsanti */
+button,
+input[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #a0522d;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #8b4513;
+}
+
+/* Sezione ingredienti o materie prime */
+.ingredienti {
+  margin-top: 20px;
+  padding: 16px;
+  background-color: #fef3e7;
+  border: 1px solid #e0c4a8;
+  border-radius: 12px;
+  box-shadow: 0 2
