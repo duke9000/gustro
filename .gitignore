@@ -1,0 +1,32 @@
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore PHPStorm / VSCode settings
+/.idea/
+.vscode/
+
+# Composer
+/vendor/
+
+# Node
+/node_modules/
+
+# Environment files
+.env
+
+# Logs and cache
+*.log
+cache/
+
+# XAMPP/htdocs tmp files
+*.tmp
+
+# Ignore uploads or large images if you prefer
+/public/foto/
+/img/
+
+# Ignore database files
+*.sql
+
+# Allow README and other config files
