@@ -1,0 +1,131 @@
+/*modifica da fare al database*/
+
+
+
+-- 🔄 Rinomina la colonna "normale" in "tradizionale" e imposta come booleano
+ALTER TABLE prodotti
+CHANGE normale tradizionale TINYINT(1);
+
+-- 🔄 Rinomina la colonna "posizione_normale" in "posizione_tradizionale" e imposta come testo
+ALTER TABLE prodotti
+CHANGE posizione_normale posizione_tradizionale VARCHAR(255);
+
+-- 🛠️ Imposta il valore predefinito della colonna "lavorazione_completata" a 0 (non completata)
+ALTER TABLE prodotti
+MODIFY lavorazione_completata TINYINT(1) DEFAULT 0;
+
+-- 🧹 Rimuove colonne obsolete relative alla conservazione e tipologia
+ALTER TABLE prodotti
+DROP COLUMN frigorifero,
+DROP COLUMN congelatore,
+DROP COLUMN magazzino,
+DROP COLUMN tradizionale,
+DROP COLUMN bio,
+DROP COLUMN gluten_free;
+
+-- ➕ Aggiunge una nuova colonna "tipologia" dopo "pezzatura"
+ALTER TABLE prodotti
+ADD COLUMN tipologia VARCHAR(255) AFTER pezzatura;
+
+-- 🧹 Rimuove vecchie colonne di posizione legate alle tipologie specifiche
+ALTER TABLE prodotti
+DROP COLUMN posizione_tradizionale,
+DROP COLUMN posizione_bio,
+DROP COLUMN posizione_gluten_free;
+
+-- 🧹 Rimuove vecchie colonne di posizione legate ai luoghi di conservazione
+ALTER TABLE prodotti
+DROP COLUMN posizione_frigorifero,
+DROP COLUMN posizione_congelatore,
+DROP COLUMN posizione_magazzino;
+
+-- ➕ Aggiunge una nuova colonna "posizione" unificata
+ALTER TABLE prodotti
+ADD COLUMN posizione VARCHAR(255);
+
+-- 🕒 Imposta valori automatici per data e ora di inserimento
+ALTER TABLE prodotti
+MODIFY data_inserimento DATE DEFAULT (CURRENT_DATE),
+MODIFY ora_inserimento TIME DEFAULT (CURRENT_TIME);
+
+
+
+
+CREATE OR REPLACE VIEW vista_materie_da_completare AS
+SELECT
+    id_prodotto,
+    codice_articolo,
+    materia_prima,
+    fornitore,
+    data_di_arrivo,
+    responsabile_magazzino,
+    prezzo,
+    foto_preview
+FROM prodotti
+WHERE codice_articolo IS NULL OR codice_articolo = ''
+   OR prezzo IS NULL OR prezzo = '';
+
+
+
+
+
+
+/*----------------------------------------------------------------*/
+
+
+✅
+/*Tabella prodotti al 13/10/25*/
+
+CREATE TABLE prodotti (
+  id_prodotto INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  materia_prima VARCHAR(255),
+  codice_articolo VARCHAR(255),
+  fornitore VARCHAR(255),
+  provenienza VARCHAR(255),
+  dimensione_collo VARCHAR(255),
+  pezzatura VARCHAR(255),
+  data_di_arrivo DATE,
+  data_di_scadenza DATE,
+  prezzo DECIMAL(10,2),
+  frigorifero TINYINT(1),
+  congelatore TINYINT(1),
+  magazzino TINYINT(1),
+  normale TINYINT(1),
+  bio TINYINT(1),
+  gluten_free TINYINT(1),
+  feedback TEXT,
+  data_inserimento DATE,
+  ora_inserimento TIME,
+  responsabile_magazzino VARCHAR(255),
+  responsabile_cucina VARCHAR(255),
+  responsabile_ufficio VARCHAR(255),
+  foto_preview VARCHAR(255),
+  lavorazione_completata TINYINT(1),
+  posizione_frigorifero VARCHAR(255),
+  posizione_congelatore VARCHAR(255),
+  posizione_magazzino VARCHAR(255),
+  posizione_normale VARCHAR(255),
+  posizione_bio VARCHAR(255),
+  posizione_gluten_free VARCHAR(255)
+  )
+
+
+/*Tabella user al 13/10/25*/
+
+CREATE TABLE users (
+  id BIGINT(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id BIGINT(20),
+  user_name VARCHAR(100),
+  password VARCHAR(100),
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  mansione VARCHAR(255),
+  nome VARCHAR(255),
+  cognome VARCHAR(255)
+)
+
+/*Vista prodotti senza prezzo per php ufficio al 13/10/25*/
+
+CREATE VIEW prodotti_senza_prezzo AS
+SELECT id_prodotto, codice_articolo, materia_prima, fornitore, data_di_arrivo, pezzatura, responsabile_magazzino
+FROM prodotti
+WHERE prezzo IS NULL OR prezzo = 0;

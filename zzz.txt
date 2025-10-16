@@ -1,0 +1,33 @@
+cosa fare volta prossima 
+-annidamento tradizionale bio celiaco ✅ RICHIESTA GIUDITTA 14/10/25
+-possibilità di aggiungere codice prodotto e prezzo da utente ufficio qualora non presente ✅
+-rendere migliore la visione da cellulare di ufficio.php
+-creare pagina cucina.php che da la possibilità di aggiungere dati per calo peso 
+-fare pagina admin con barra di ricerca che veda tutto il magazzino inserito e quindi una vista
+
+
+
+15/10/25
+-possibilità di aggiungere codice prodotto e prezzo da utente ufficio qualora non presente ✅
+-fatto una nuova vista vista_materie_da_completare, QUELLA VECCHIA
+-aggiunto preview foto in ufficio.php
+
+
+14/10/25
+-cambiato il database da db_gustrò a db_gustro 
+-modificato colonna prodotti della fase di lavorazione 
+-aggiunto tasto torna indietro in dasboard_cucina 
+-modificato colonna tradizionale e posizione tradizionale da normale
+-modificato in magazzino e insermento materie prime da normale a tradizionale
+-modificate tante cose, seguire la colonna query per filo e per segno dall'alto verso il basso
+
+
+
+13/10/25 ✅ il 14/10/25
+cambiare gustrò in gustro da:
+
+-connection.php ✅
+-ufficio.php ✅
+-inserimento_materie prime.php ✅
+-dashboard_cucina.php ✅
+-aggiorna_prezzo.php ✅
