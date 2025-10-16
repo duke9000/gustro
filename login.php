@@ -64,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <div class="login-container">
     <img src="img/gustroLogo.jpg" alt="Logo Gustrò" style="width: 250px; height: 140px;">
 
+    <!-- Mostra ora server definita in connection.php -->
+    <div class="server-time" style="margin-top:8px; font-size:14px; color:#333;">
+      Ora server: <?php echo isset($desp) ? $desp : ''; ?>
+    </div>
+
     <?php if (!empty($errore)): ?>
       <div class="errore-box">
         <?php echo $errore; ?>

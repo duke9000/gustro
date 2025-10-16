@@ -17,7 +17,4 @@ if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
     // $desp will contain the current server time (HH:MM:SS)
     $desp = date('H:i:s');
 
-    // Output the time to the page
-    echo $desp;
-
 ?>
